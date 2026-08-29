@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lala Player | Advanced Media Downloader</title>
+
+    <!-- Explicit Favicon Links for GitHub Pages Compatibility -->
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="apple-touch-icon" href="./favicon.png">
+    <link rel="shortcut icon" href="./favicon.png">
+
+    <!-- Standardized Web Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== Global Reset & User Properties ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Google Sans", "Open Sans", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            scroll-behavior: smooth;
+        }
+
+        input,
+        textarea,
+        button,
+        select,
+        a {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        a:focus,
+        a:visited,
+        a:active {
+            outline: none;
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            background-color: #121212;
+            color: #e3e3e3;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===== Custom Global Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8e918f;
+            border-radius: 8px;
+            border: 2px solid #121212;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8c7fa;
+        }
+
+        /* ===== Theme Variables ===== */
+        :root {
+            --surface: #1e1f20;
+            --surface-variant: #2d2e30;
+            --primary: #a8c7fa;
+            --on-primary: #062e6f;
+            --text-main: #e3e3e3;
+            --text-muted: #c4c7c5;
+            --border: #8e918f;
+            --radius-lg: 28px;
+            --radius-sm: 16px;
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ===== Typography ===== */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: var(--text-muted);
+        }
+
+        /* ===== Layout & Sections ===== */
+        .section {
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 24px;
+            position: relative;
+        }
+
+        .section-auto {
+            min-height: auto;
+            padding: 80px 24px;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+        }
+
+        /* ===== Hero Section & Logo ===== */
+        .hero {
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .hero-logo {
+            width: 130px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 16px;
+            filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
+        }
+
+        .hero-app-name {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* ===== Buttons ===== */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--primary);
+            color: var(--on-primary);
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: var(--radius-sm);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-4px) scale(1.02);
+            background-color: #bad3ff;
+        }
+
+        .btn-download:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .btn-download svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* ===== Clean App Preview Image ===== */
+        .app-preview-container {
+            margin-top: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .app-preview {
+            width: 100%;
+            max-width: 850px;
+            /* Reduced from 1100px for better scaling */
+            height: auto;
+            object-fit: contain;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            border-radius: 24px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-16px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* ===== Tutorial / How It Works Grid ===== */
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .step-card {
+            background-color: var(--surface);
+            border: 1px solid var(--surface-variant);
+            padding: 40px 32px;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-8px);
+            background-color: #242527;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-size: 8rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.03);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .step-icon {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(168, 199, 250, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .step-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .step-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+        }
+
+        /* ===== Features Grid ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background-color: var(--surface);
+            border: 1px solid var(--surface-variant);
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            background-color: #242527;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--surface-variant);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .feature-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+        }
+
+        /* ===== Notices & Legal ===== */
+        .notices-section {
+            background-color: var(--surface);
+            border-top: 1px solid var(--surface-variant);
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .notice-box {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            background-color: var(--surface-variant);
+            padding: 24px 32px;
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--primary);
+            text-align: left;
+        }
+
+        .notice-box h4 {
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notice-box p {
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--surface-variant);
+            background-color: #121212;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.7;
+        }
+
+        /* ===== Scroll Animation Classes ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+
+            .section,
+            .section-auto {
+                padding: 60px 20px;
+            }
+
+            .hero {
+                padding-top: 80px;
+            }
+
+            .feature-card,
+            .step-card {
+                padding: 24px;
+            }
+
+            .step-number {
+                font-size: 6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section class="section hero">
+        <div class="container fade-up">
+
+            <img src="./favicon.png" alt="Lala Player Logo" class="hero-logo fade-up">
+            <h2 class="hero-app-name fade-up">Lala Player</h2>
+
+            <h1 class="fade-up">Quality with Originality.</h1>
+            <p>The sleek, intelligent, and fully portable media client for Windows. Save 4K video and high-fidelity MP3s
+                seamlessly to your local drive.</p>
+
+            <a href="">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                </svg>
+                Download for Windows
+            </a>
+
+            <!-- Borderless Preview Image (Added 24px border radius & reduced width) -->
+            <div class="app-preview-container fade-up">
+                <img src="./app.png" alt="Lala Player Application Interface" class="app-preview">
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Section -->
+    <section class="section-auto">
+        <div class="container">
+            <h2 class="section-title fade-up">How It Works</h2>
+
+            <div class="tutorial-grid">
+                <!-- Step 1 -->
+                <div class="step-card fade-up">
+                    <span class="step-number">1</span>
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
+                        </svg>
+                    </div>
+                    <h3>Provide the Link</h3>
+                    <p>Simply paste your media link into the input field. Lala Player will automatically lock the input
+                        and validate the URL, securely communicating with the source to find the best available data.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card fade-up">
+                    <span class="step-number">2</span>
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z" />
+                        </svg>
+                    </div>
+                    <h3>Select Quality</h3>
+                    <p>Click the Audio or Video buttons to reveal a beautifully formatted list. View precise information
+                        including true resolutions, frame rates, bitrates, and live estimated file sizes before
+                        deciding.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card fade-up">
+                    <span class="step-number">3</span>
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z" />
+                        </svg>
+                    </div>
+                    <h3>Save Seamlessly</h3>
+                    <p>Choose your desired format and watch the live progress bar. Lala Player processes the files and
+                        organizes them beautifully into your designated Windows folder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-auto" style="padding-top: 40px;">
+        <div class="container">
+            <h2 class="section-title fade-up">Engineered for Performance</h2>
+
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card fade-up">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" />
+                        </svg>
+                    </div>
+                    <h3>True 4K Ultra HD</h3>
+                    <p>Preserve original quality. Lala Player accurately identifies and fetches authentic 2160p 60fps
+                        video formats seamlessly.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card fade-up">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z" />
+                        </svg>
+                    </div>
+                    <h3>High-Fidelity MP3</h3>
+                    <p>Process crystal-clear audio streams with automated metadata and square thumbnail embedding.
+                        Perfect for offline music libraries.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card fade-up">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" />
+                        </svg>
+                    </div>
+                    <h3>100% Portable</h3>
+                    <p>Zero installation required. The entire application, including necessary extraction engines, is
+                        bundled into one independent, portable executable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notices & Legal Section -->
+    <section class="notices-section">
+        <div class="container fade-up">
+            <div class="notice-box">
+                <h4>
+                    <svg style="width:20px;height:20px;fill:var(--primary);" viewBox="0 0 24 24">
+                        <path
+                            d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
+                    </svg>
+                    Installation Notice: Windows SmartScreen
+                </h4>
+                <p>Because Lala Player is an independent application without a corporate publisher certificate, Windows
+                    Defender or your antivirus may flag the executable as "unrecognized" or suspicious. This is a
+                    standard false positive for unsigned software. To proceed safely, simply click <strong>"More
+                        info"</strong> followed by <strong>"Run anyway"</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Legal Disclaimer:</strong> Lala Player is developed strictly for educational purposes and personal
+            archiving. Users are solely responsible for ensuring they have the legal right and permission to access,
+            store, or utilize any media processed through this application. Do not use this tool to infringe upon
+            copyrighted materials or violate third-party terms of service.</p>
+        <p style="margin-top: 16px;">&copy; 2026 Lala Player. All rights reserved.</p>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const elementsToAnimate = document.querySelectorAll('.fade-up');
+            elementsToAnimate.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>
