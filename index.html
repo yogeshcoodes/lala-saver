@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>Lala Saver | Advanced Media Downloader</title>
@@ -29,27 +30,30 @@
             scroll-behavior: smooth;
         }
 
-        input,
-        textarea,
-        button,
-        select,
-        a {
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        }
-
-        a:focus,
-        a:visited,
-        a:active {
-            outline: none;
+        html {
+            overflow-x: hidden;
         }
 
         body {
-            height: 100%;
+            min-height: 100%;
             width: 100%;
             background-color: #121212;
             color: #e3e3e3;
             overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        input,
+        textarea,
+        button,
+        select,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a:focus,
+        button:focus {
+            outline: none;
         }
 
 
@@ -128,6 +132,7 @@
 
             display: flex;
             flex-direction: column;
+
             justify-content: center;
             align-items: center;
 
@@ -187,7 +192,9 @@
 
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 4.5rem);
+
             line-height: 1.1;
+
             margin-bottom: 20px;
         }
 
@@ -230,6 +237,9 @@
 
             gap: 12px;
 
+            width: fit-content;
+            max-width: 100%;
+
             background-color: var(--primary);
             color: var(--on-primary);
 
@@ -265,6 +275,9 @@
         .btn-download svg {
             width: 24px;
             height: 24px;
+
+            flex-shrink: 0;
+
             fill: currentColor;
         }
 
@@ -302,7 +315,9 @@
 
         .release-history-toggle:hover {
             color: var(--primary);
-            background-color: rgba(168, 199, 250, 0.08);
+
+            background-color:
+                rgba(168, 199, 250, 0.08);
         }
 
         .release-history-toggle svg {
@@ -310,11 +325,13 @@
             height: 18px;
 
             fill: none;
+
             stroke: currentColor;
 
             stroke-width: 2;
 
-            transition: transform 0.35s ease;
+            transition:
+                transform 0.35s ease;
         }
 
         .release-history-toggle.active svg {
@@ -323,34 +340,38 @@
 
 
         /* =========================================================
-           RELEASE HISTORY PANEL
+           RELEASE HISTORY
         ========================================================= */
 
         .release-history {
             width: min(100%, 620px);
 
             display: grid;
+
             grid-template-rows: 0fr;
 
             opacity: 0;
 
+            overflow: hidden;
+
             transition:
                 grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
                 opacity 0.3s ease;
-
-            overflow: hidden;
         }
 
         .release-history.open {
             grid-template-rows: 1fr;
+
             opacity: 1;
         }
 
         .release-history-inner {
             min-height: 0;
+
             overflow: hidden;
 
             display: flex;
+
             flex-direction: column;
 
             gap: 12px;
@@ -374,6 +395,7 @@
             width: 100%;
 
             display: flex;
+
             align-items: center;
 
             gap: 16px;
@@ -403,6 +425,7 @@
 
         .release-history.open .release-card {
             transform: translateY(0);
+
             opacity: 1;
         }
 
@@ -431,6 +454,7 @@
             height: 48px;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -448,6 +472,7 @@
             height: 26px;
 
             fill: none;
+
             stroke: currentColor;
 
             stroke-width: 1.8;
@@ -463,6 +488,7 @@
 
         .release-info {
             min-width: 0;
+
             flex: 1;
         }
 
@@ -470,12 +496,15 @@
             color: #1c1c1c;
 
             font-size: 0.98rem;
+
             font-weight: 700;
 
             margin-bottom: 2px;
 
             white-space: nowrap;
+
             overflow: hidden;
+
             text-overflow: ellipsis;
         }
 
@@ -485,6 +514,7 @@
             font-size: 0.82rem;
 
             display: flex;
+
             align-items: center;
 
             gap: 6px;
@@ -506,6 +536,7 @@
             color: #315d9b;
 
             font-size: 0.7rem;
+
             font-weight: 700;
 
             text-transform: uppercase;
@@ -558,6 +589,7 @@
             height: 20px;
 
             fill: none;
+
             stroke: currentColor;
 
             stroke-width: 2;
@@ -568,7 +600,7 @@
 
 
         /* =========================================================
-           PREVIEW
+           APP PREVIEW
         ========================================================= */
 
         .app-preview-container {
@@ -577,6 +609,7 @@
             width: 100%;
 
             display: flex;
+
             justify-content: center;
 
             perspective: 1000px;
@@ -584,6 +617,7 @@
 
         .app-preview {
             width: 100%;
+
             max-width: 850px;
 
             height: auto;
@@ -605,7 +639,7 @@
         @keyframes float {
 
             0% {
-                transform: translateY(0px);
+                transform: translateY(0);
             }
 
             50% {
@@ -613,7 +647,7 @@
             }
 
             100% {
-                transform: translateY(0px);
+                transform: translateY(0);
             }
         }
 
@@ -626,7 +660,8 @@
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+                repeat(auto-fit,
+                    minmax(min(100%, 280px), 1fr));
 
             gap: 24px;
 
@@ -684,6 +719,7 @@
             border-radius: 50%;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -748,11 +784,13 @@
             flex: 1;
 
             display: flex;
+
             justify-content: center;
         }
 
         .showcase-img {
             width: 100%;
+
             max-width: 450px;
 
             background: transparent;
@@ -800,7 +838,8 @@
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+                repeat(auto-fit,
+                    minmax(min(100%, 280px), 1fr));
 
             gap: 24px;
 
@@ -831,11 +870,13 @@
             width: 48px;
             height: 48px;
 
-            background-color: var(--surface-variant);
+            background-color:
+                var(--surface-variant);
 
             border-radius: 50%;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -863,7 +904,7 @@
 
 
         /* =========================================================
-           NOTICE
+           SECURITY NOTICE
         ========================================================= */
 
         .notices-section {
@@ -903,6 +944,7 @@
             font-size: 1.15rem;
 
             display: flex;
+
             align-items: center;
 
             gap: 8px;
@@ -965,38 +1007,66 @@
 
 
         /* =========================================================
-           RESPONSIVE
+           MOBILE
         ========================================================= */
 
         @media (max-width: 768px) {
 
-            .section,
-            .section-auto {
-                padding: 60px 16px;
-            }
+            /*
+             * Mobile hero must grow naturally.
+             * Do NOT vertically center a hero that can be taller
+             * than the viewport.
+             */
 
             .hero {
-                padding-top: 80px;
+                min-height: auto;
+
+                justify-content: flex-start;
+
+                padding:
+                    70px 16px 60px;
             }
 
-            .feature-card,
-            .step-card {
-                padding: 24px;
+            .section,
+            .section-auto {
+                padding-left: 16px;
+                padding-right: 16px;
             }
 
-            .step-number {
-                font-size: 6rem;
+            .hero-logo {
+                width: 130px;
             }
 
-            .showcase-row,
-            .showcase-row.reverse {
-                flex-direction: column;
+            .hero h1 {
+                font-size:
+                    clamp(2.4rem, 10vw, 3.5rem);
 
-                text-align: center;
+                line-height: 1.08;
+            }
 
-                gap: 32px;
+            .hero p {
+                font-size: 1.05rem;
 
-                margin-bottom: 60px;
+                line-height: 1.7;
+
+                margin-bottom: 34px;
+            }
+
+            .btn-download {
+                width: min(100%, 620px);
+
+                padding:
+                    18px 22px;
+            }
+
+            .download-actions {
+                width: 100%;
+
+                overflow: visible;
+            }
+
+            .release-history {
+                width: 100%;
             }
 
             .release-card {
@@ -1023,6 +1093,80 @@
 
             .release-meta {
                 font-size: 0.76rem;
+            }
+
+            .showcase-row,
+            .showcase-row.reverse {
+                flex-direction: column;
+
+                text-align: center;
+
+                gap: 32px;
+
+                margin-bottom: 60px;
+            }
+
+            .feature-card,
+            .step-card {
+                padding: 24px;
+            }
+
+            .step-number {
+                font-size: 6rem;
+            }
+        }
+
+
+        /* =========================================================
+           VERY SMALL PHONES
+        ========================================================= */
+
+        @media (max-width: 380px) {
+
+            .hero {
+                padding-top: 55px;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn-download {
+                font-size: 1rem;
+
+                padding:
+                    17px 16px;
+            }
+
+            .btn-download svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .release-card {
+                gap: 9px;
+
+                padding:
+                    11px;
+            }
+
+            .release-file-icon {
+                flex-basis: 40px;
+
+                width: 40px;
+                height: 40px;
+            }
+
+            .release-name {
+                font-size: 0.82rem;
+            }
+
+            .release-meta {
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -1064,12 +1208,10 @@
             <div class="download-actions fade-up">
 
 
-                <!-- Latest Download -->
+                <!-- LATEST VERSION -->
 
                 <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lalasaver_v2/Lala.Saver.1.0.0.exe"
                     class="btn-download">
-
-                    <!-- Windows-style icon -->
 
                     <svg viewBox="0 0 24 24">
                         <path
@@ -1081,7 +1223,7 @@
                 </a>
 
 
-                <!-- Release History Toggle -->
+                <!-- RELEASE HISTORY BUTTON -->
 
                 <button type="button" class="release-history-toggle" id="releaseHistoryToggle" aria-expanded="false"
                     aria-controls="releaseHistory">
@@ -1096,7 +1238,7 @@
 
 
                 <!-- =================================================
-                     RELEASE HISTORY
+                     RELEASE HISTORY PANEL
                 ================================================= -->
 
                 <div class="release-history" id="releaseHistory">
@@ -1105,14 +1247,12 @@
 
 
                         <!-- =================================================
-                             CURRENT / LATEST RELEASE
+                             V2 — CURRENT RELEASE
                         ================================================= -->
 
                         <div class="release-card">
 
                             <div class="release-file-icon">
-
-                                <!-- File SVG -->
 
                                 <svg viewBox="0 0 24 24">
 
@@ -1157,15 +1297,15 @@
 
 
                             <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lalasaver_v2/Lala.Saver.1.0.0.exe"
-                                class="release-download" aria-label="Download LalaSaver v2">
+                                class="release-download" aria-label="Download lalasaver_v2.exe">
 
                                 <svg viewBox="0 0 24 24">
 
-                                    <path d="M12 3v12" />
+                                    <path d="M12 3v12"></path>
 
-                                    <path d="M7 10l5 5 5-5" />
+                                    <path d="M7 10l5 5 5-5"></path>
 
-                                    <path d="M5 21h14" />
+                                    <path d="M5 21h14"></path>
 
                                 </svg>
 
@@ -1175,14 +1315,12 @@
 
 
                         <!-- =================================================
-                             OLDER RELEASE
+                             V1 — OLDER RELEASE
                         ================================================= -->
 
                         <div class="release-card">
 
                             <div class="release-file-icon">
-
-                                <!-- File SVG -->
 
                                 <svg viewBox="0 0 24 24">
 
@@ -1223,15 +1361,15 @@
 
 
                             <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lalasaver/Lala.Saver.1.0.0.exe"
-                                class="release-download" aria-label="Download LalaSaver v1">
+                                class="release-download" aria-label="Download lalasaver_v1.exe">
 
                                 <svg viewBox="0 0 24 24">
 
-                                    <path d="M12 3v12" />
+                                    <path d="M12 3v12"></path>
 
-                                    <path d="M7 10l5 5 5-5" />
+                                    <path d="M7 10l5 5 5-5"></path>
 
-                                    <path d="M5 21h14" />
+                                    <path d="M5 21h14"></path>
 
                                 </svg>
 
@@ -1275,11 +1413,10 @@
                 How It Works
             </h2>
 
-
             <div class="tutorial-grid">
 
 
-                <!-- Step 1 -->
+                <!-- STEP 1 -->
 
                 <div class="step-card fade-up">
 
@@ -1312,7 +1449,7 @@
                 </div>
 
 
-                <!-- Step 2 -->
+                <!-- STEP 2 -->
 
                 <div class="step-card fade-up">
 
@@ -1345,7 +1482,7 @@
                 </div>
 
 
-                <!-- Step 3 -->
+                <!-- STEP 3 -->
 
                 <div class="step-card fade-up">
 
@@ -1377,7 +1514,6 @@
 
                 </div>
 
-
             </div>
 
         </div>
@@ -1395,7 +1531,7 @@
         <div class="container">
 
 
-            <!-- Row 1 -->
+            <!-- AUDIO -->
 
             <div class="showcase-row fade-up">
 
@@ -1424,7 +1560,7 @@
             </div>
 
 
-            <!-- Row 2 -->
+            <!-- VIDEO -->
 
             <div class="showcase-row reverse fade-up">
 
@@ -1452,7 +1588,6 @@
 
             </div>
 
-
         </div>
 
     </section>
@@ -1471,11 +1606,10 @@
                 Engineered for Performance
             </h2>
 
-
             <div class="features-grid">
 
 
-                <!-- Feature 1 -->
+                <!-- FEATURE 1 -->
 
                 <div class="feature-card fade-up">
 
@@ -1503,7 +1637,7 @@
                 </div>
 
 
-                <!-- Feature 2 -->
+                <!-- FEATURE 2 -->
 
                 <div class="feature-card fade-up">
 
@@ -1531,7 +1665,7 @@
                 </div>
 
 
-                <!-- Feature 3 -->
+                <!-- FEATURE 3 -->
 
                 <div class="feature-card fade-up">
 
@@ -1557,7 +1691,6 @@
                     </p>
 
                 </div>
-
 
             </div>
 
@@ -1642,37 +1775,70 @@
 
     <script>
 
+        /* =========================================================
+           PREVENT BROWSER SCROLL RESTORATION
+        ========================================================= */
+
+        if ("scrollRestoration" in history) {
+            history.scrollRestoration = "manual";
+        }
+
+
+        /* =========================================================
+           FORCE PAGE TO TOP ON INITIAL LOAD
+        ========================================================= */
+
+        window.scrollTo(0, 0);
+
+
         document.addEventListener("DOMContentLoaded", () => {
+
+            /*
+             * Browser can restore scroll position after DOM parsing.
+             * This puts the page back at the top during initial load.
+             */
+
+            window.scrollTo(0, 0);
 
 
             /* =====================================================
-               RELEASE HISTORY TOGGLE
+               RELEASE HISTORY
             ===================================================== */
 
             const releaseToggle =
-                document.getElementById("releaseHistoryToggle");
+                document.getElementById(
+                    "releaseHistoryToggle"
+                );
 
             const releaseHistory =
-                document.getElementById("releaseHistory");
-
-
-            releaseToggle.addEventListener("click", () => {
-
-                const isOpen =
-                    releaseHistory.classList.toggle("open");
-
-                releaseToggle.classList.toggle(
-                    "active",
-                    isOpen
+                document.getElementById(
+                    "releaseHistory"
                 );
 
-                releaseToggle.setAttribute(
-                    "aria-expanded",
-                    isOpen ? "true" : "false"
-                );
 
-            });
+            releaseToggle.addEventListener(
+                "click",
+                () => {
 
+                    const isOpen =
+                        releaseHistory.classList.toggle(
+                            "open"
+                        );
+
+                    releaseToggle.classList.toggle(
+                        "active",
+                        isOpen
+                    );
+
+                    releaseToggle.setAttribute(
+                        "aria-expanded",
+                        isOpen
+                            ? "true"
+                            : "false"
+                    );
+
+                }
+            );
 
 
             /* =====================================================
@@ -1692,7 +1858,9 @@
 
                         entries.forEach(entry => {
 
-                            if (entry.isIntersecting) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
                                 entry.target.classList.add(
                                     "visible"
@@ -1712,19 +1880,44 @@
 
 
             const elementsToAnimate =
-                document.querySelectorAll(".fade-up");
+                document.querySelectorAll(
+                    ".fade-up"
+                );
 
 
-            elementsToAnimate.forEach(element => {
-
-                observer.observe(element);
-
-            });
+            elementsToAnimate.forEach(
+                element => {
+                    observer.observe(element);
+                }
+            );
 
         });
 
-    </script>
 
+        /* =========================================================
+           HANDLE BROWSER PAGE RESTORATION
+        ========================================================= */
+
+        window.addEventListener(
+            "pageshow",
+            () => {
+
+                window.scrollTo(0, 0);
+
+            }
+        );
+
+
+        window.addEventListener(
+            "load",
+            () => {
+
+                window.scrollTo(0, 0);
+
+            }
+        );
+
+    </script>
 
 </body>
 
