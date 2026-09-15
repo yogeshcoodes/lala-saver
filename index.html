@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>Lala Saver | Advanced Media Downloader</title>
@@ -20,7 +19,6 @@
         /* =========================================================
            GLOBAL RESET
         ========================================================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -56,11 +54,9 @@
             outline: none;
         }
 
-
         /* =========================================================
            SCROLLBAR
         ========================================================= */
-
         ::-webkit-scrollbar {
             width: 10px;
             height: 10px;
@@ -80,35 +76,26 @@
             background: #a8c7fa;
         }
 
-
         /* =========================================================
            THEME
         ========================================================= */
-
         :root {
             --surface: #1e1f20;
             --surface-variant: #2d2e30;
-
             --primary: #a8c7fa;
             --on-primary: #062e6f;
-
             --text-main: #e3e3e3;
             --text-muted: #c4c7c5;
-
             --border: #8e918f;
-
             --radius-lg: 28px;
             --radius-sm: 16px;
-
             --shadow-soft:
                 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
-
         /* =========================================================
            TYPOGRAPHY
         ========================================================= */
-
         h1,
         h2,
         h3,
@@ -122,22 +109,16 @@
             color: var(--text-muted);
         }
 
-
         /* =========================================================
            LAYOUT
         ========================================================= */
-
         .section {
             min-height: 100dvh;
-
             display: flex;
             flex-direction: column;
-
             justify-content: center;
             align-items: center;
-
             padding: 80px 24px;
-
             position: relative;
         }
 
@@ -158,11 +139,9 @@
             font-size: clamp(2rem, 4vw, 2.5rem);
         }
 
-
         /* =========================================================
            HERO
         ========================================================= */
-
         .hero {
             text-align: center;
             padding-top: 100px;
@@ -172,9 +151,7 @@
             width: 130px;
             height: auto;
             object-fit: contain;
-
             margin-bottom: 16px;
-
             filter:
                 drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
         }
@@ -182,82 +159,71 @@
         .hero-app-name {
             font-size: 1.75rem;
             font-weight: 600;
-
             color: var(--primary);
-
             margin-bottom: 12px;
-
             letter-spacing: 0.5px;
         }
 
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 4.5rem);
-
             line-height: 1.1;
-
             margin-bottom: 20px;
         }
 
         .hero p {
             font-size: clamp(1.1rem, 2vw, 1.3rem);
-
             max-width: 600px;
-
             margin: 0 auto 40px auto;
         }
-
 
         /* =========================================================
            DOWNLOAD AREA
         ========================================================= */
-
         .download-actions {
             display: flex;
-
             flex-direction: column;
             align-items: center;
-
             gap: 14px;
-
             width: 100%;
-
             margin-bottom: 24px;
         }
 
+        .download-platforms {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .download-platform {
+            width: 100%;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            position: relative;
+        }
 
         /* =========================================================
            MAIN DOWNLOAD BUTTON
         ========================================================= */
-
         .btn-download {
             display: inline-flex;
-
             align-items: center;
             justify-content: center;
-
             gap: 12px;
-
-            width: fit-content;
-            max-width: 100%;
-
+            width: 100%;
             background-color: var(--primary);
             color: var(--on-primary);
-
             text-decoration: none;
-
-            padding: 18px 40px;
-
+            padding: 18px 24px;
             border-radius: var(--radius-sm);
-
             font-size: 1.1rem;
             font-weight: 600;
-
             border: none;
-
             cursor: pointer;
-
             box-shadow: var(--shadow-soft);
-
             transition:
                 transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
                 background-color 0.3s ease;
@@ -275,39 +241,27 @@
         .btn-download svg {
             width: 24px;
             height: 24px;
-
             flex-shrink: 0;
-
             fill: currentColor;
         }
-
 
         /* =========================================================
            RELEASE HISTORY TOGGLE
         ========================================================= */
-
         .release-history-toggle {
             display: inline-flex;
-
+            align-self: center;
             align-items: center;
             justify-content: center;
-
             gap: 8px;
-
             background: transparent;
-
             color: var(--text-muted);
-
             border: none;
-
-            padding: 8px 12px;
-
+            padding: 10px 14px;
+            margin-top: 12px;
             border-radius: 10px;
-
             font-size: 0.95rem;
-
             cursor: pointer;
-
             transition:
                 color 0.25s ease,
                 background-color 0.25s ease;
@@ -315,7 +269,6 @@
 
         .release-history-toggle:hover {
             color: var(--primary);
-
             background-color:
                 rgba(168, 199, 250, 0.08);
         }
@@ -323,13 +276,9 @@
         .release-history-toggle svg {
             width: 18px;
             height: 18px;
-
             fill: none;
-
             stroke: currentColor;
-
             stroke-width: 2;
-
             transition:
                 transform 0.35s ease;
         }
@@ -338,22 +287,15 @@
             transform: rotate(180deg);
         }
 
-
         /* =========================================================
            RELEASE HISTORY
         ========================================================= */
-
         .release-history {
-            width: min(100%, 620px);
-
+            width: 100%;
             display: grid;
-
             grid-template-rows: 0fr;
-
             opacity: 0;
-
             overflow: hidden;
-
             transition:
                 grid-template-rows 0.45s cubic-bezier(0.4, 0, 0.2, 1),
                 opacity 0.3s ease;
@@ -361,62 +303,41 @@
 
         .release-history.open {
             grid-template-rows: 1fr;
-
             opacity: 1;
         }
 
         .release-history-inner {
             min-height: 0;
-
             overflow: hidden;
-
             display: flex;
-
             flex-direction: column;
-
             gap: 12px;
-
             padding-top: 0;
-
             transition:
                 padding-top 0.45s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .release-history.open .release-history-inner {
-            padding-top: 10px;
+            padding-top: 4px;
         }
-
 
         /* =========================================================
            RELEASE CARD
         ========================================================= */
-
         .release-card {
             width: 100%;
-
             display: flex;
-
             align-items: center;
-
             gap: 16px;
-
             background: #ffffff;
-
             border: 1px solid #d9d9d9;
-
             border-radius: 18px;
-
             padding: 15px 16px;
-
             text-align: left;
-
             box-shadow:
                 0 8px 28px rgba(0, 0, 0, 0.25);
-
             transform: translateY(-8px);
-
             opacity: 0;
-
             transition:
                 transform 0.35s ease,
                 opacity 0.35s ease,
@@ -425,7 +346,6 @@
 
         .release-history.open .release-card {
             transform: translateY(0);
-
             opacity: 1;
         }
 
@@ -433,143 +353,92 @@
             transition-delay: 0.05s;
         }
 
-        .release-history.open .release-card:nth-child(2) {
-            transition-delay: 0.12s;
-        }
-
         .release-card:hover {
             box-shadow:
                 0 12px 34px rgba(0, 0, 0, 0.34);
         }
 
-
         /* =========================================================
            RELEASE FILE ICON
         ========================================================= */
-
         .release-file-icon {
             flex: 0 0 48px;
-
             width: 48px;
             height: 48px;
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             border-radius: 12px;
-
             background: #fff7d6;
-
             border: 1px solid #eadca2;
-
             color: #c59a00;
         }
 
         .release-file-icon svg {
             width: 26px;
             height: 26px;
-
             fill: none;
-
             stroke: currentColor;
-
             stroke-width: 1.8;
-
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
-
         /* =========================================================
            RELEASE INFORMATION
         ========================================================= */
-
         .release-info {
             min-width: 0;
-
             flex: 1;
         }
 
         .release-name {
             color: #1c1c1c;
-
             font-size: 0.98rem;
-
             font-weight: 700;
-
             margin-bottom: 2px;
-
             white-space: nowrap;
-
             overflow: hidden;
-
             text-overflow: ellipsis;
         }
 
         .release-meta {
             color: #6e6e6e;
-
             font-size: 0.82rem;
-
             display: flex;
-
             align-items: center;
-
             gap: 6px;
-
             flex-wrap: wrap;
         }
 
         .release-current {
             display: inline-flex;
-
             align-items: center;
-
             padding: 2px 7px;
-
             border-radius: 999px;
-
             background: #e9f1ff;
-
             color: #315d9b;
-
             font-size: 0.7rem;
-
             font-weight: 700;
-
             text-transform: uppercase;
-
             letter-spacing: 0.3px;
         }
-
 
         /* =========================================================
            RELEASE DOWNLOAD BUTTON
         ========================================================= */
-
         .release-download {
             flex-shrink: 0;
-
             display: inline-flex;
-
             align-items: center;
             justify-content: center;
-
             width: 40px;
             height: 40px;
-
             border-radius: 10px;
-
             background: #f2f2f2;
-
             color: #444;
-
             text-decoration: none;
-
             border: 1px solid #dedede;
-
             transition:
                 background-color 0.25s ease,
                 color 0.25s ease,
@@ -578,66 +447,45 @@
 
         .release-download:hover {
             background: #ececec;
-
             color: #111;
-
             transform: translateY(-2px);
         }
 
         .release-download svg {
             width: 20px;
             height: 20px;
-
             fill: none;
-
             stroke: currentColor;
-
             stroke-width: 2;
-
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
-
         /* =========================================================
            APP PREVIEW
         ========================================================= */
-
         .app-preview-container {
             margin-top: 60px;
-
             width: 100%;
-
             display: flex;
-
             justify-content: center;
-
             perspective: 1000px;
         }
 
         .app-preview {
             width: 100%;
-
             max-width: 850px;
-
             height: auto;
-
             object-fit: contain;
-
             background: transparent;
-
             border: none;
-
             box-shadow: none;
-
             border-radius: 24px;
-
             animation:
                 float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-
             0% {
                 transform: translateY(0);
             }
@@ -651,36 +499,25 @@
             }
         }
 
-
         /* =========================================================
            TUTORIAL
         ========================================================= */
-
         .tutorial-grid {
             display: grid;
-
             grid-template-columns:
                 repeat(auto-fit,
                     minmax(min(100%, 280px), 1fr));
-
             gap: 24px;
-
             width: 100%;
         }
 
         .step-card {
             background-color: var(--surface);
-
             border: 1px solid var(--surface-variant);
-
             padding: 40px 32px;
-
             border-radius: var(--radius-lg);
-
             position: relative;
-
             overflow: hidden;
-
             transition:
                 transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
                 background-color 0.3s ease;
@@ -688,56 +525,41 @@
 
         .step-card:hover {
             transform: translateY(-8px);
-
             background-color: #242527;
         }
 
         .step-number {
             position: absolute;
-
             top: -20px;
             right: -10px;
-
             font-size: 8rem;
-
             font-weight: 700;
-
             color: rgba(255, 255, 255, 0.03);
-
             line-height: 1;
-
             pointer-events: none;
         }
 
         .step-icon {
             width: 48px;
             height: 48px;
-
             background-color:
                 rgba(168, 199, 250, 0.1);
-
             border-radius: 50%;
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             margin-bottom: 24px;
-
             color: var(--primary);
         }
 
         .step-icon svg {
             width: 24px;
             height: 24px;
-
             fill: currentColor;
         }
 
         .step-card h3 {
             font-size: 1.4rem;
-
             margin-bottom: 12px;
         }
 
@@ -745,30 +567,22 @@
             font-size: 0.95rem;
         }
 
-
         /* =========================================================
            SHOWCASE
         ========================================================= */
-
         .showcase-section {
             background-color: #1a1a1c;
-
             padding: 80px 24px;
-
             border-top:
                 1px solid var(--surface-variant);
-
             border-bottom:
                 1px solid var(--surface-variant);
         }
 
         .showcase-row {
             display: flex;
-
             align-items: center;
-
             gap: 60px;
-
             margin-bottom: 100px;
         }
 
@@ -782,24 +596,17 @@
 
         .showcase-img-container {
             flex: 1;
-
             display: flex;
-
             justify-content: center;
         }
 
         .showcase-img {
             width: 100%;
-
             max-width: 450px;
-
             background: transparent;
-
             border: none;
-
             transition:
                 transform 0.4s ease;
-
             filter:
                 drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
         }
@@ -815,46 +622,33 @@
 
         .showcase-text h3 {
             font-size: 2rem;
-
             margin-bottom: 16px;
-
             color: var(--primary);
         }
 
         .showcase-text p {
             font-size: 1.1rem;
-
             line-height: 1.7;
-
             color: var(--text-muted);
         }
-
 
         /* =========================================================
            FEATURES
         ========================================================= */
-
         .features-grid {
             display: grid;
-
             grid-template-columns:
                 repeat(auto-fit,
                     minmax(min(100%, 280px), 1fr));
-
             gap: 24px;
-
             width: 100%;
         }
 
         .feature-card {
             background-color: var(--surface);
-
             border: 1px solid var(--surface-variant);
-
             padding: 32px;
-
             border-radius: var(--radius-lg);
-
             transition:
                 transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
                 background-color 0.3s ease;
@@ -862,39 +656,30 @@
 
         .feature-card:hover {
             transform: translateY(-6px);
-
             background-color: #242527;
         }
 
         .feature-icon {
             width: 48px;
             height: 48px;
-
             background-color:
                 var(--surface-variant);
-
             border-radius: 50%;
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             margin-bottom: 20px;
-
             color: var(--primary);
         }
 
         .feature-icon svg {
             width: 24px;
             height: 24px;
-
             fill: currentColor;
         }
 
         .feature-card h3 {
             font-size: 1.3rem;
-
             margin-bottom: 12px;
         }
 
@@ -902,97 +687,68 @@
             font-size: 0.95rem;
         }
 
-
         /* =========================================================
            SECURITY NOTICE
         ========================================================= */
-
         .notices-section {
             background-color: var(--surface);
-
             border-top:
                 1px solid var(--surface-variant);
-
             padding: 80px 24px;
-
             text-align: center;
         }
 
         .notice-box {
             max-width: 800px;
-
             margin: 0 auto 40px auto;
-
             background-color:
                 var(--surface-variant);
-
             padding: 28px 32px;
-
             border-radius: var(--radius-sm);
-
             border-left:
                 4px solid var(--primary);
-
             text-align: left;
         }
 
         .notice-box h4 {
             color: var(--text-main);
-
             margin-bottom: 12px;
-
             font-size: 1.15rem;
-
             display: flex;
-
             align-items: center;
-
             gap: 8px;
         }
 
         .notice-box p {
             font-size: 0.95rem;
-
             line-height: 1.7;
         }
-
 
         /* =========================================================
            FOOTER
         ========================================================= */
-
         footer {
             text-align: center;
-
             padding: 40px 24px;
-
             border-top:
                 1px solid var(--surface-variant);
-
             background-color: #121212;
         }
 
         footer p {
             font-size: 0.85rem;
-
             max-width: 700px;
-
             margin: 0 auto;
-
             opacity: 0.7;
         }
-
 
         /* =========================================================
            SCROLL ANIMATION
         ========================================================= */
-
         .fade-up {
             opacity: 0;
-
             transform:
                 translateY(30px);
-
             transition:
                 opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
                 transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1000,23 +756,18 @@
 
         .fade-up.visible {
             opacity: 1;
-
             transform:
                 translateY(0);
         }
 
-
         /* =========================================================
-           MOBILE
+           TABLET / MOBILE
         ========================================================= */
-
         @media (max-width: 768px) {
 
             .hero {
                 min-height: auto;
-
                 justify-content: flex-start;
-
                 padding:
                     70px 16px 60px;
             }
@@ -1034,28 +785,38 @@
             .hero h1 {
                 font-size:
                     clamp(2.4rem, 10vw, 3.5rem);
-
                 line-height: 1.08;
             }
 
             .hero p {
                 font-size: 1.05rem;
-
                 line-height: 1.7;
-
                 margin-bottom: 34px;
             }
 
-            .btn-download {
-                width: min(100%, 620px);
+            .download-platforms {
+                flex-direction: column;
+                align-items: center;
+                gap: 22px;
+            }
 
+            .download-platform {
+                width: 100%;
+                max-width: 620px;
+            }
+
+            .btn-download {
+                width: 100%;
                 padding:
                     18px 22px;
             }
 
+            .release-history-toggle {
+                margin-top: 10px;
+            }
+
             .download-actions {
                 width: 100%;
-
                 overflow: visible;
             }
 
@@ -1065,13 +826,11 @@
 
             .release-card {
                 gap: 12px;
-
                 padding: 13px;
             }
 
             .release-file-icon {
                 flex-basis: 44px;
-
                 width: 44px;
                 height: 44px;
             }
@@ -1092,11 +851,8 @@
             .showcase-row,
             .showcase-row.reverse {
                 flex-direction: column;
-
                 text-align: center;
-
                 gap: 32px;
-
                 margin-bottom: 60px;
             }
 
@@ -1110,11 +866,9 @@
             }
         }
 
-
         /* =========================================================
            VERY SMALL PHONES
         ========================================================= */
-
         @media (max-width: 380px) {
 
             .hero {
@@ -1131,7 +885,6 @@
 
             .btn-download {
                 font-size: 1rem;
-
                 padding:
                     17px 16px;
             }
@@ -1143,14 +896,12 @@
 
             .release-card {
                 gap: 9px;
-
                 padding:
                     11px;
             }
 
             .release-file-icon {
                 flex-basis: 40px;
-
                 width: 40px;
                 height: 40px;
             }
@@ -1166,14 +917,11 @@
     </style>
 </head>
 
-
 <body>
-
 
     <!-- =========================================================
          HERO SECTION
     ========================================================= -->
-
     <section class="section hero">
 
         <div class="container fade-up">
@@ -1194,183 +942,213 @@
                 seamlessly to your local drive.
             </p>
 
-
             <!-- =====================================================
                  DOWNLOAD ACTIONS
             ===================================================== -->
-
             <div class="download-actions fade-up">
 
+                <div class="download-platforms">
 
-                <!-- LATEST VERSION -->
+                    <!-- =================================================
+                         WINDOWS
+                    ================================================= -->
+                    <div class="download-platform" id="windowsPlatform">
 
-                <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lalasaver_v2/Lala.Saver.1.0.0.exe"
-                    class="btn-download">
+                        <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lalasaver_v2/Lala.Saver.1.0.0.exe"
+                            class="btn-download">
 
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
-                    </svg>
+                            <!-- Windows Icon -->
+                            <svg viewBox="0 0 24 24">
 
-                    Download Latest Version
+                                <path
+                                    d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.801" />
 
-                </a>
+                            </svg>
 
+                            Download for Windows
 
-                <!-- RELEASE HISTORY BUTTON -->
+                        </a>
 
-                <button type="button" class="release-history-toggle" id="releaseHistoryToggle" aria-expanded="false"
-                    aria-controls="releaseHistory">
+                        <button type="button" class="release-history-toggle" id="windowsReleaseHistoryToggle"
+                            aria-expanded="false" aria-controls="windowsReleaseHistory">
 
-                    Release History
+                            Release History
 
-                    <svg viewBox="0 0 24 24">
-                        <path d="M6 9l6 6 6-6"></path>
-                    </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
 
-                </button>
+                        </button>
 
+                        <div class="release-history" id="windowsReleaseHistory">
 
-                <!-- =================================================
-                     RELEASE HISTORY PANEL
-                ================================================= -->
+                            <div class="release-history-inner">
 
-                <div class="release-history" id="releaseHistory">
+                                <div class="release-card">
 
-                    <div class="release-history-inner">
+                                    <div class="release-file-icon">
 
+                                        <svg viewBox="0 0 24 24">
 
-                        <!-- =================================================
-                             V2 — CURRENT RELEASE
-                        ================================================= -->
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
 
-                        <div class="release-card">
+                                            <path d="M14 2v6h6" />
 
-                            <div class="release-file-icon">
+                                            <path d="M8 13h8" />
 
-                                <svg viewBox="0 0 24 24">
+                                            <path d="M8 17h6" />
 
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        </svg>
 
-                                    <path d="M14 2v6h6" />
+                                    </div>
 
-                                    <path d="M8 13h8" />
+                                    <div class="release-info">
 
-                                    <path d="M8 17h6" />
+                                        <div class="release-name">
+                                            Lala.Saver.1.0.0.exe
+                                        </div>
 
-                                </svg>
+                                        <div class="release-meta">
 
-                            </div>
+                                            <span>
+                                                245 MB
+                                            </span>
 
+                                            <span>•</span>
 
-                            <div class="release-info">
+                                            <span>
+                                                Latest Windows release
+                                            </span>
 
-                                <div class="release-name">
-                                    lalasaver_v2.exe
+                                            <span class="release-current">
+                                                Current
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lalasaver_v2/Lala.Saver.1.0.0.exe"
+                                        class="release-download" aria-label="Download Windows release">
+
+                                        <svg viewBox="0 0 24 24">
+
+                                            <path d="M12 3v12"></path>
+
+                                            <path d="M7 10l5 5 5-5"></path>
+
+                                            <path d="M5 21h14"></path>
+
+                                        </svg>
+
+                                    </a>
+
                                 </div>
 
-                                <div class="release-meta">
-
-                                    <span>
-                                        245 MB
-                                    </span>
-
-                                    <span>•</span>
-
-                                    <span>
-                                        Latest release
-                                    </span>
-
-                                    <span class="release-current">
-                                        Current
-                                    </span>
-
-                                </div>
-
                             </div>
-
-
-                            <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lalasaver_v2/Lala.Saver.1.0.0.exe"
-                                class="release-download" aria-label="Download lalasaver_v2.exe">
-
-                                <svg viewBox="0 0 24 24">
-
-                                    <path d="M12 3v12"></path>
-
-                                    <path d="M7 10l5 5 5-5"></path>
-
-                                    <path d="M5 21h14"></path>
-
-                                </svg>
-
-                            </a>
-
                         </div>
 
-
-                        <!-- =================================================
-                             V1 — OLDER RELEASE
-                        ================================================= -->
-
-                        <div class="release-card">
-
-                            <div class="release-file-icon">
-
-                                <svg viewBox="0 0 24 24">
-
-                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-
-                                    <path d="M14 2v6h6" />
-
-                                    <path d="M8 13h8" />
-
-                                    <path d="M8 17h6" />
-
-                                </svg>
-
-                            </div>
+                    </div>
 
 
-                            <div class="release-info">
+                    <!-- =================================================
+                         ANDROID
+                    ================================================= -->
+                    <div class="download-platform" id="androidPlatform">
 
-                                <div class="release-name">
-                                    lalasaver_v1.exe
+                        <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lala-saver-apk/app-debug.apk"
+                            class="btn-download">
+
+                            <!-- Android Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+
+                                <path
+                                    d="M40-240q10-105 64-191t139-140l-77-129q-9-14-4.5-30t18.5-24q14-9 30-5t24 18l80 133q38-16 79.5-24t86.5-8q45 0 86.5 8t79.5 24l80-133q8-14 24-18t30 5q14 8 18 24t-4 30l-77 129q85 54 139 140t64 191H40Zm680.5-151.5Q722-409 711-426t-27-22q-16-5-29 4t-15 26q-2 17 9 34t27.5 22.5Q693-356 706-365t14.5-26.5ZM284-362q16-5 27-22t9.5-34.5Q319-436 306-445t-29.5-3.5Q260-443 249-426t-9 34q2 17 15 26t29 4Z" />
+
+                            </svg>
+
+                            Download for Android
+
+                        </a>
+
+                        <button type="button" class="release-history-toggle" id="androidReleaseHistoryToggle"
+                            aria-expanded="false" aria-controls="androidReleaseHistory">
+
+                            Release History
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 9l6 6 6-6"></path>
+                            </svg>
+
+                        </button>
+
+                        <div class="release-history" id="androidReleaseHistory">
+
+                            <div class="release-history-inner">
+
+                                <div class="release-card">
+
+                                    <div class="release-file-icon">
+
+                                        <svg viewBox="0 0 24 24">
+
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+
+                                            <path d="M14 2v6h6" />
+
+                                            <path d="M8 13h8" />
+
+                                            <path d="M8 17h6" />
+
+                                        </svg>
+
+                                    </div>
+
+                                    <div class="release-info">
+
+                                        <div class="release-name">
+                                            app-debug.apk
+                                        </div>
+
+                                        <div class="release-meta">
+
+                                            <span>
+                                                Android APK
+                                            </span>
+
+                                            <span>•</span>
+
+                                            <span>
+                                                Latest Android release
+                                            </span>
+
+                                            <span class="release-current">
+                                                Current
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                    <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lala-saver-apk/app-debug.apk"
+                                        class="release-download" aria-label="Download Android APK">
+
+                                        <svg viewBox="0 0 24 24">
+
+                                            <path d="M12 3v12"></path>
+
+                                            <path d="M7 10l5 5 5-5"></path>
+
+                                            <path d="M5 21h14"></path>
+
+                                        </svg>
+
+                                    </a>
+
                                 </div>
 
-                                <div class="release-meta">
-
-                                    <span>
-                                        245 MB
-                                    </span>
-
-                                    <span>•</span>
-
-                                    <span>
-                                        Previous release
-                                    </span>
-
-                                </div>
-
                             </div>
-
-
-                            <a href="https://github.com/yogeshcoodes/lala-saver/releases/download/lalasaver/Lala.Saver.1.0.0.exe"
-                                class="release-download" aria-label="Download lalasaver_v1.exe">
-
-                                <svg viewBox="0 0 24 24">
-
-                                    <path d="M12 3v12"></path>
-
-                                    <path d="M7 10l5 5 5-5"></path>
-
-                                    <path d="M5 21h14"></path>
-
-                                </svg>
-
-                            </a>
-
                         </div>
-
 
                     </div>
 
@@ -1389,15 +1167,12 @@
             </div>
 
         </div>
-
     </section>
-
 
 
     <!-- =========================================================
          TUTORIAL SECTION
     ========================================================= -->
-
     <section class="section-auto">
 
         <div class="container">
@@ -1408,9 +1183,7 @@
 
             <div class="tutorial-grid">
 
-
                 <!-- STEP 1 -->
-
                 <div class="step-card fade-up">
 
                     <span class="step-number">
@@ -1441,9 +1214,7 @@
 
                 </div>
 
-
                 <!-- STEP 2 -->
-
                 <div class="step-card fade-up">
 
                     <span class="step-number">
@@ -1455,7 +1226,7 @@
                         <svg viewBox="0 0 24 24">
 
                             <path
-                                d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z" />
+                                d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z" />
 
                         </svg>
 
@@ -1474,9 +1245,7 @@
 
                 </div>
 
-
                 <!-- STEP 3 -->
-
                 <div class="step-card fade-up">
 
                     <span class="step-number">
@@ -1510,22 +1279,17 @@
             </div>
 
         </div>
-
     </section>
-
 
 
     <!-- =========================================================
          SHOWCASE SECTION
     ========================================================= -->
-
     <section class="section-auto showcase-section">
 
         <div class="container">
 
-
             <!-- AUDIO -->
-
             <div class="showcase-row fade-up">
 
                 <div class="showcase-img-container">
@@ -1552,9 +1316,7 @@
 
             </div>
 
-
             <!-- VIDEO -->
-
             <div class="showcase-row reverse fade-up">
 
                 <div class="showcase-img-container">
@@ -1582,15 +1344,12 @@
             </div>
 
         </div>
-
     </section>
-
 
 
     <!-- =========================================================
          FEATURES SECTION
     ========================================================= -->
-
     <section class="section-auto" style="padding-top: 60px;">
 
         <div class="container">
@@ -1601,9 +1360,7 @@
 
             <div class="features-grid">
 
-
                 <!-- FEATURE 1 -->
-
                 <div class="feature-card fade-up">
 
                     <div class="feature-icon">
@@ -1629,9 +1386,7 @@
 
                 </div>
 
-
                 <!-- FEATURE 2 -->
-
                 <div class="feature-card fade-up">
 
                     <div class="feature-icon">
@@ -1657,9 +1412,7 @@
 
                 </div>
 
-
                 <!-- FEATURE 3 -->
-
                 <div class="feature-card fade-up">
 
                     <div class="feature-icon">
@@ -1688,15 +1441,12 @@
             </div>
 
         </div>
-
     </section>
-
 
 
     <!-- =========================================================
          SECURITY NOTICE
     ========================================================= -->
-
     <section class="notices-section">
 
         <div class="container fade-up">
@@ -1722,21 +1472,19 @@
                     it does not carry a paid digital signature. As a result, Windows Defender or
                     web browsers may occasionally display an "unrecognized app" alert. This is
                     completely normal for unsigned indie software, and the code is entirely safe.
-                    To open the app, simply click <strong>"More info"</strong> and then <strong>"Run anyway"</strong>.
+                    To open the app, simply click <strong>"More info"</strong> and then
+                    <strong>"Run anyway"</strong>.
                 </p>
 
             </div>
 
         </div>
-
     </section>
-
 
 
     <!-- =========================================================
          FOOTER
     ========================================================= -->
-
     <footer>
 
         <p>
@@ -1750,34 +1498,28 @@
         </p>
 
         <p style="margin-top: 16px;">
-            &copy; 2026 Lala Saver. Built with purpose.
+            © 2026 Lala Saver. Built with purpose.
         </p>
 
     </footer>
 
 
-
     <!-- =========================================================
          JAVASCRIPT
     ========================================================= -->
-
     <script>
 
         /* =========================================================
            PREVENT BROWSER SCROLL RESTORATION
         ========================================================= */
-
         if ("scrollRestoration" in history) {
             history.scrollRestoration = "manual";
         }
 
-
         /* =========================================================
            FORCE PAGE TO TOP ON INITIAL LOAD
         ========================================================= */
-
         window.scrollTo(0, 0);
-
 
         document.addEventListener("DOMContentLoaded", () => {
 
@@ -1785,45 +1527,160 @@
              * Browser can restore scroll position after DOM parsing.
              * This puts the page back at the top during initial load.
              */
-
             window.scrollTo(0, 0);
 
 
             /* =====================================================
-               RELEASE HISTORY
+               RELEASE HISTORY ELEMENTS
             ===================================================== */
+            const releaseControls = [
+                {
+                    toggle: document.getElementById(
+                        "windowsReleaseHistoryToggle"
+                    ),
+                    history: document.getElementById(
+                        "windowsReleaseHistory"
+                    ),
+                    platform: document.getElementById(
+                        "windowsPlatform"
+                    )
+                },
+                {
+                    toggle: document.getElementById(
+                        "androidReleaseHistoryToggle"
+                    ),
+                    history: document.getElementById(
+                        "androidReleaseHistory"
+                    ),
+                    platform: document.getElementById(
+                        "androidPlatform"
+                    )
+                }
+            ];
 
-            const releaseToggle =
-                document.getElementById(
-                    "releaseHistoryToggle"
+
+            /* =====================================================
+               CLOSE RELEASE HISTORY
+            ===================================================== */
+            const closeReleaseHistory = (item) => {
+
+                item.history.classList.remove("open");
+                item.toggle.classList.remove("active");
+
+                item.toggle.setAttribute(
+                    "aria-expanded",
+                    "false"
                 );
 
-            const releaseHistory =
-                document.getElementById(
-                    "releaseHistory"
+            };
+
+
+            /* =====================================================
+               CLOSE ALL OTHER RELEASE HISTORIES
+            ===================================================== */
+            const closeOtherHistories = (currentItem) => {
+
+                releaseControls.forEach(item => {
+
+                    if (item !== currentItem) {
+                        closeReleaseHistory(item);
+                    }
+
+                });
+
+            };
+
+
+            /* =====================================================
+               RELEASE HISTORY TOGGLE
+            ===================================================== */
+            releaseControls.forEach(item => {
+
+                item.toggle.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.stopPropagation();
+
+                        const isOpen =
+                            item.history.classList.contains(
+                                "open"
+                            );
+
+                        closeOtherHistories(item);
+
+                        if (isOpen) {
+
+                            closeReleaseHistory(item);
+
+                        } else {
+
+                            item.history.classList.add(
+                                "open"
+                            );
+
+                            item.toggle.classList.add(
+                                "active"
+                            );
+
+                            item.toggle.setAttribute(
+                                "aria-expanded",
+                                "true"
+                            );
+
+                        }
+
+                    }
                 );
 
+            });
 
-            releaseToggle.addEventListener(
+
+            /* =====================================================
+               CLICK OUTSIDE TO CLOSE
+            ===================================================== */
+            document.addEventListener(
                 "click",
-                () => {
+                (event) => {
 
-                    const isOpen =
-                        releaseHistory.classList.toggle(
-                            "open"
+                    const clickedInsideReleaseArea =
+                        releaseControls.some(
+                            item =>
+                                item.platform.contains(
+                                    event.target
+                                )
                         );
 
-                    releaseToggle.classList.toggle(
-                        "active",
-                        isOpen
-                    );
+                    if (!clickedInsideReleaseArea) {
 
-                    releaseToggle.setAttribute(
-                        "aria-expanded",
-                        isOpen
-                            ? "true"
-                            : "false"
-                    );
+                        releaseControls.forEach(
+                            item => {
+                                closeReleaseHistory(item);
+                            }
+                        );
+
+                    }
+
+                }
+            );
+
+
+            /* =====================================================
+               ESCAPE TO CLOSE
+            ===================================================== */
+            document.addEventListener(
+                "keydown",
+                (event) => {
+
+                    if (event.key === "Escape") {
+
+                        releaseControls.forEach(
+                            item => {
+                                closeReleaseHistory(item);
+                            }
+                        );
+
+                    }
 
                 }
             );
@@ -1832,13 +1689,11 @@
             /* =====================================================
                SCROLL ANIMATIONS
             ===================================================== */
-
             const observerOptions = {
                 root: null,
                 rootMargin: "0px",
                 threshold: 0.15
             };
-
 
             const observer =
                 new IntersectionObserver(
@@ -1885,13 +1740,10 @@
         /* =========================================================
            HANDLE BROWSER PAGE RESTORATION
         ========================================================= */
-
         window.addEventListener(
             "pageshow",
             () => {
-
                 window.scrollTo(0, 0);
-
             }
         );
 
@@ -1899,9 +1751,7 @@
         window.addEventListener(
             "load",
             () => {
-
                 window.scrollTo(0, 0);
-
             }
         );
 
